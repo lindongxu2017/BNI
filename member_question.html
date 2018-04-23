@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>会员一对一会面记录表</title>
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+        <link rel="shortcut icon" href="/favicon.ico">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+        <link rel="stylesheet" href="lib/sui/sm.min.css">
+        <link rel="stylesheet" href="lib/sui/sm-extend.min.css">
+
+        <link rel="stylesheet" href="css/main.css">
+
+        <style>
+
+            .content-block {
+                padding: 0;
+                color: #231815;
+            }
+            .content-block > div {
+                background: #fff;
+                margin-bottom: 7px;
+                padding: 10px 10px;
+            }
+            p {
+                margin:0 7px;
+            }
+            .question-desc{
+                color: #939393;
+                margin-top: 0;
+                margin-bottom: 5px; 
+            }
+            .question-title, .question-desc{
+                font-size: 0.75rem;
+                letter-spacing: 1px;
+            }
+            .input-desc {
+                border-top: 1px #ccc solid;
+                padding:0px 7px;
+            }
+            .input-desc label{
+                color: #ccc;
+            }
+            .input-desc p{
+                padding-top: 10px;
+                border-bottom: 1px solid #ccc; 
+            }
+            .input-desc input{
+                width: 90%;
+                height: 30px;
+                border: 0;  
+            }
+            .submit,.save{
+                color: #fff;
+                width: 100%;
+                margin-top: 30px;
+                margin-bottom: 10px;
+                border-color: #86334F;
+                background-color: #86334F;
+            }
+            .save{
+                margin-top: 10px;
+                background-color: #fff;
+                color: #86334F;
+            }
+            .btn-box {
+                padding: 0px 15px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="page-group">
+            <div class="page page-current">
+                <!-- 这里是页面内容区 -->
+                <div class="content">
+                    <div class="content-block">
+
+                        <div class="row question no-gutter">
+                            <div class="col-10">
+                                <p>1、</p>
+                            </div>
+                            <div class="col-90">
+                                <p class="question-title">请详细形容你所提供的产品及服务</p>
+                                <p class="question-desc">(请清晰及明确的描述)</p>
+                            </div>
+                            <div class="col-100 input-desc">
+                                <p><label>a、</label><input type="text"></p>
+                                <p><label>b、</label><input type="text"></p>
+                                <p><label>c、</label><input type="text"></p>
+                                <p><label>d、</label><input type="text"></p>
+                            </div>
+                        </div>
+
+                        <div class="row question no-gutter">
+                            <div class="col-10">
+                                    <p>2、</p>
+                            </div>
+                            <div class="col-90">
+                                <p class="question-title">你所提供的产品与竞争者之间的区别</p>
+                                <p class="question-desc">(例如：我的产品5年内包退换)</p>
+                            </div>
+                            <div class="col-100 input-desc">
+                                <p><label>a、</label><input type="text"></p>
+                                <p><label>b、</label><input type="text"></p>
+                                <p><label>c、</label><input type="text"></p>
+                                <p><label>d、</label><input type="text"></p>
+                            </div> 
+                        </div>
+
+                        <div class="row question no-gutter">
+                            <div class="col-10">
+                                    <p>3、</p>
+                            </div>
+                            <div class="col-90">
+                                <p class="question-title">请明确列举你想找寻的目标市场</p>
+                                <p class="question-desc">(例如：律师、银行家、地产业等)</p>
+                            </div>
+                            <div class="col-100 input-desc">
+                                <p><label>a、</label><input type="text"></p>
+                                <p><label>b、</label><input type="text"></p>
+                                <p><label>c、</label><input type="text"></p>
+                                <p><label>d、</label><input type="text"></p>
+                            </div> 
+                        </div>
+
+                        <div class="row question no-gutter">
+                            <div class="col-10">
+                                    <p>4、</p>
+                            </div>
+                            <div class="col-90">
+                                <p class="question-title">还有哪类与你相关的行业范围未进入你的分会？</p>
+                                <p class="question-desc">(没有冲突而同市场的行业)</p>
+                            </div>
+                            <div class="col-100 input-desc">
+                                <p><label>a、</label><input type="text"></p>
+                                <p><label>b、</label><input type="text"></p>
+                                <p><label>c、</label><input type="text"></p>
+                                <p><label>d、</label><input type="text"></p>
+                            </div> 
+                        </div>
+
+                        <div class="row question no-gutter">
+                            <div class="col-10">
+                                    <p>5、</p>
+                            </div>
+                            <div class="col-90">
+                                <p class="question-title">告诉我当我听到一句怎样的话时即表示有机会可以为你找到合适的引荐？</p>
+                                <!-- <p class="question-desc">(没有冲突而同市场的行业)</p> -->
+                            </div>
+                            <div class="col-100 input-desc">
+                                <p><label>a、</label><input type="text"></p>
+                                <p><label>b、</label><input type="text"></p>
+                            </div> 
+                        </div>
+
+                        
+                        <div class="row question no-gutter">
+                            <div class="col-10">
+                                    <p>6、</p>
+                            </div>
+                            <div class="col-90">
+                                <p class="question-title">请教我一句好的开场白，即可为你找寻适合的目标客户/资源</p>
+                                <!-- <p class="question-desc">(没有冲突而同市场的行业)</p> -->
+                            </div>
+                            <div class="col-100 input-desc">
+                                <p><label>a、</label><input type="text"></p>
+                                <p><label>b、</label><input type="text"></p>
+                            </div> 
+                        </div>
+                       
+
+                        <div class="row question no-gutter">
+                            <div class="col-10">
+                                    <p>7、</p>
+                            </div>
+                            <div class="col-90">
+                                <p class="question-title">我该如何衡量一个引荐的质量/认证程度？例如：我能否告诉你真的需要一个新工人？</p>
+                                <p class="question-desc">(对方的答案越仔细越理想)</p>
+                            </div>
+                            <div class="col-100 input-desc">
+                                <p><label>a、</label><input type="text"></p>
+                                <p><label>b、</label><input type="text"></p>
+                                <p><label>c、</label><input type="text"></p>
+                                <p><label>d、</label><input type="text"></p>
+                            </div> 
+                        </div>
+                        
+                        <div class="row question no-gutter">
+                            <div class="col-10">
+                                    <p>8、</p>
+                            </div>
+                            <div class="col-90">
+                                <p class="question-title">对你来说什么会是一个不合适的引荐？</p>
+                                <p class="question-desc">(例如：想批发商只进一件货)</p>
+                            </div>
+                            <div class="col-100 input-desc">
+                                <p><label>a、</label><input type="text"></p>
+                                <p><label>b、</label><input type="text"></p>
+                                <p><label>c、</label><input type="text"></p>
+                                <p><label>d、</label><input type="text"></p>
+                            </div> 
+                        </div>
+
+
+                        <div class="row question no-gutter">
+                            <div class="col-10">
+                                    <p>9、</p>
+                            </div>
+                            <div class="col-90">
+                                <p class="question-title">一般人对你的业务有什么误解及我应如何回应？</p>
+                                <p class="question-desc">(例如：风水顾问的费用一般很贵)</p>
+                            </div>
+                            <div class="col-100 input-desc">
+                                <p><label>a、</label><input type="text"></p>
+                                <p><label>b、</label><input type="text"></p>
+                            </div> 
+                        </div>
+                        
+                    </div>
+
+                    <div class="content-block btn-box">
+                        <a href="#" class="button button-big submit">提交</a>
+                        <a href="#" class="button button-big save">保存</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <script type='text/javascript' src='lib/sui/zepto.min.js' charset='utf-8'></script>
+        <script type='text/javascript' src='lib/sui/sm.min.js' charset='utf-8'></script>
+        <script type='text/javascript' src='lib/sui/sm-extend.min.js' charset='utf-8'></script>
+
+    </body>
+
+
+</html>

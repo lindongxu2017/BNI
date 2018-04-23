@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>会员风采</title>
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+        <link rel="shortcut icon" href="/favicon.ico">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+        <link rel="stylesheet" href="lib/sui/sm.min.css">
+        <link rel="stylesheet" href="lib/sui/sm-extend.min.css">
+        <link rel="stylesheet" href="css/main.css">
+        <style>
+            .index-pubilc-list {
+                background: #fff;
+                margin-bottom: 7px;
+                padding: 7px 10px;
+                font-size: 0.82em;
+            }
+            .index-pubilc-list .name {
+                border-bottom: 1px #ccc solid;
+                padding-bottom: 7px;
+            }
+            .index-pubilc-list img {
+                /* width: 60px; */
+                width: 80px;
+                vertical-align: super;
+                border-radius: 50%;
+                margin-left: 10px;
+            }
+            .index-pubilc-list a {
+                color: inherit;
+            }
+            .index-pubilc-list .other {
+                width: 200px;
+                display: inline-block;
+                vertical-align: super;
+                margin-left: 10px;
+                line-height: 25px;
+            }
+            .index-pubilc-list .tell span {
+                color: #000;
+            }
+            .index-pubilc-list p {
+                /* margin:7px; */
+                margin: 0 7px;
+            }
+
+            .bar-header-secondary{
+                top: 0;
+            }
+            .bar-header-secondary ~ .content{
+                top: 2.2rem;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="page-group">
+            <div class="page page-current">
+                <!-- 标题栏 -->
+                <!-- <header class="bar bar-nav">
+                    <a class="icon icon-me pull-left open-panel"></a>
+                    <h1 class="title">会员风采</h1>
+                </header> -->
+
+                <!-- 搜索栏 -->
+                <div class="bar bar-header-secondary">
+                    <div class="searchbar">
+                        <a class="searchbar-cancel">取消</a>
+                        <div class="search-input">
+                            <label class="icon icon-search" for="search"></label>
+                            <input type="search" id='search' placeholder='输入关键字...'/>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 工具栏 -->
+                <nav class="bar bar-tab">
+                    <a class="tab-item external active" href="">
+                        <span class="icon"><img src="images/home-check2.png" width="25"></span>
+                        <span class="tab-label">会员风采</span>
+                    </a>
+                    <!-- <a class="tab-item external" href="">
+                        <span class="icon"><img src="images/qiqiu.png" width="25"></span>
+                        <span class="tab-label">活动</span>
+                    </a> -->
+                    <a class="tab-item external" href="business.html">
+                        <span class="icon"><img src="images/business.png" width="25"></span>
+                        <span class="tab-label">商务引荐</span>
+                    </a>
+                    <a class="tab-item external " href="member.html">
+                        <span class="icon"><img src="images/person.png" width="25"></span>
+                        <span class="tab-label">会员中心</span>
+                    </a>
+                </nav>
+
+                <!-- 这里是页面内容区 -->
+                <div class="content infinite-scroll">
+                    <div class="index-pubilc-list content-list" v-for="item in list">
+                        <a href="member_details.html" class="external">
+                            <!-- <p class="name">001号会员：林豆豆</p> -->
+                            <img src="http://tx.haiqq.com/uploads/allimg/150327/21154111N-13.jpg" alt="">
+                            <div class="other">
+                                <p>谭某某</p>
+                                <p>分会职务：经理</p>
+                                <p>代表行业：室内空间设计</p>
+                                <p class="tell">电话：<span>139564488456</span></p>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- 加载提示符 -->
+                    <div class="infinite-scroll-preloader" v-show="currentPage*10<total">
+                        <div class="preloader">
+                        </div>
+                    </div>
+                    <p id="noMore" style="text-align:center;font-size:12px;padding:10px 0;color:#999;" v-show="currentPage*10>total">没有更多了...</p>
+                </div>
+
+            </div>
+        </div>
+
+        <script src="https://cdn.bootcss.com/vue/2.3.4/vue.js"></script>
+        <script type='text/javascript' src='lib/sui/zepto.min.js' charset='utf-8'></script>
+        <script type='text/javascript' src='lib/sui/sm.min.js' charset='utf-8'></script>
+        <script type='text/javascript' src='lib/sui/sm-extend.min.js' charset='utf-8'></script>
+
+        <script>
+            var vm = new Vue({
+                el:'.content',
+                data:{
+                    list:['','','','','',''],
+                    currentPage:'1', //当前页
+                    lastIndex:'',
+                    total:'13', //数据总长度
+                },
+                mounted(){
+                    this.loadData()
+                },
+                methods:{
+                    loadData:function(){    
+
+                        var self = this;
+                        var loading = false;
+
+                        var maxItems = self.total;  //数据总长度
+
+                        function getData(){  //取数据
+                            
+                            self.currentPage++;
+                            self.list.push('','','','','','','')
+                            /*myFn.ajax('get', {page:self.currentPage,feedback:1}, apiAddress.task.todayTask, function(res){
+                                self.list = self.list.concat(res.data.data);
+                            });*/
+                            console.log('当前页：' + self.currentPage + '当前长度：' + self.lastIndex)
+                        }
+                        
+                        // 注册'infinite'事件处理函数
+                        $(document).on('infinite', function() {
+
+                            // 如果正在加载，则退出
+                            if (loading) return;
+                            // 设置flag
+                            loading = true;
+                            
+                            setTimeout(function() {
+                              // 重置加载flag
+                                loading = false;
+                                if (self.lastIndex >= maxItems) {
+                                    // 加载完毕，则注销无限加载事件，以防不必要的加载:$.detachInfiniteScroll($('.infinite-scroll'));多个无线滚动请自行根据自己代码逻辑判断注销时机
+                                    // 删除加载提示符
+                                    $('.infinite-scroll-preloader').hide();
+                                    console.log('没有更多了')
+                                    return false;
+                                }
+
+                                getData();//ajax加载数据
+                                // 更新最后加载的数据长度
+                                setTimeout(function(){
+                                    self.lastIndex = $('.infinite-scroll').find('.content-list').length;
+                                },1500)
+                                $.refreshScroller();
+                            }, 1000);
+                        });
+                        $.init();
+                    }
+                }
+            })
+        </script>
+
+    </body>
+</html>

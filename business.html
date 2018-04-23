@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>生意</title>
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+        <link rel="shortcut icon" href="/favicon.ico">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+        <link rel="stylesheet" href="lib/sui/sm.min.css">
+        <link rel="stylesheet" href="lib/sui/sm-extend.min.css">
+
+        <link rel="stylesheet" href="css/main.css">
+
+        <style>
+            .content{
+                background-color: #F5F5F5;
+            }
+            .content-block{
+                color: #181818;
+            }
+            .list-block{
+                margin: 0;
+                font-size: 15px;
+            }
+            .buttons-tab .button.active{
+                color: #86334F;
+                border-color: #86334F;  
+            }
+            .row{
+                margin-left: 0;
+            }
+            .row .col-50{
+                width: 50%;
+                margin-left: 0;
+            }
+            .recommend{
+                height: 100px;
+                margin-top: 5px;
+                font-size: 15px;
+                padding: 10px;
+                line-height: 28px;
+                background-color: #fff;
+                position: relative;
+            }
+            .recommend .recommend-del {
+                width: 70px;
+                height: 100px;
+                position: absolute;
+                top: 0px;
+                right: -70px;
+                line-height: 100px;
+                text-align: center;
+                background: red;
+                color: #fff
+            }
+            .even {
+                padding-left: 7%;
+            }
+            #tab1 {
+                overflow: hidden;
+                margin-top: 49px;
+            }
+            #tab2 .recommend {
+                height: 77px;
+                line-height: 33px;
+            }
+            .bar-header-secondary {
+                top: 2.7rem;
+            }
+            #tab2 select {
+                height: 30px;
+            }
+            .yeseActive {
+                background-color: #e4e4e4;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="page-group">
+            <div class="page page-current">
+                <!-- 标题栏 -->
+                <!-- <header class="bar bar-nav">
+                    <a class="icon icon-left pull-left open-panel"></a>
+                    <h1 class="title">嘉宾列表</h1>
+                </header> -->
+
+                <!-- 工具栏 -->
+                <nav class="bar bar-tab">
+                    <a class="tab-item external" href="index.html">
+                        <span class="icon"><img src="images/home.png" width="25"></span>
+                        <span class="tab-label">会员风采</span>
+                    </a>
+                    <a class="tab-item external active" href="">
+                        <span class="icon"><img src="images/business-check2.png" width="25"></span>
+                        <span class="tab-label">商务引荐</span>
+                    </a>
+                    <a class="tab-item external " href="member.html">
+                        <span class="icon"><img src="images/person.png" width="25"></span>
+                        <span class="tab-label">会员中心</span>
+                    </a>
+                </nav>
+
+                <!-- 这里是页面内容区 -->
+                <div class="content">
+                    <div class="buttons-tab">
+                        <a href="#tab1" class="tab-link active button">商务引荐</a>
+                        <a href="#tab2" class="tab-link button">收到感谢</a>
+                    </div>
+
+                    <div class="tabs">
+                        <div id="tab1" class="tab active infinite-scroll">
+                            <!-- 搜索栏 -->
+                            <div class="bar bar-header-secondary">
+                                <div class="searchbar">
+                                    <a class="searchbar-cancel">取消</a>
+                                    <div class="search-input">
+                                        <label class="icon icon-search" for="search"></label>
+                                        <input type="search" id='search' placeholder='输入关键字...'/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="list-block contacts-block content-block recommend content-list" onclick="goDetails(1)" v-for="item in list">
+                                <div class="row">
+                                    <div class="col-50">日期：2017/08/08 15:20</div>
+                                    <div class="col-50 even">类型：内部</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-50">引荐人：谭某某</div>
+                                    <div class="col-50 even">电话：13695825478</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-50">引荐业务联系人：张某某</div>
+                                    <div class="col-50 even">电话：13695825478</div>
+                                </div>
+                                <div class="recommend-del">删除</div>
+                            </div>
+                            <!-- <div class="list-block contacts-block content-block recommend yeseActive" onclick="goDetails(1)">
+                                <div class="row">
+                                    <div class="col-50">日期：2017/08/08 15:20</div>
+                                    <div class="col-50 even">类型：内部</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-50">引荐人：谭某某</div>
+                                    <div class="col-50 even">电话：13695825478</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-50">引荐业务联系人：张某某</div>
+                                    <div class="col-50 even">电话：13695825478</div>
+                                </div>
+                                <div class="recommend-del" onclick="del(event)">删除</div>
+                            </div> -->
+                            <!-- 加载提示符 -->
+                            <div class="infinite-scroll-preloader" v-show="currentPage[0]*10<total[0]">
+                                <div class="preloader">
+                                </div>
+                            </div>
+                            <p id="noMore" style="text-align:center;font-size:12px;padding:10px 0;color:#999;" v-show="currentPage[0]*10>total[0]">没有更多了...</p>
+                        </div>
+
+                        <div id="tab2" class="tab infinite-scroll">
+                            <div class="list-block contacts-block content-block recommend content-list" onclick="goDetails(2)" v-for="item in list2"> 
+                                <div class="row ">
+                                    <div class="col-50">日期：2017/08/08 15:20</div>
+                                    <div class="col-50 even">
+                                        <select name="" id="" onclick="stopHref(event)">
+                                            <option value="1">1</option>
+                                            <option value="1">1</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-50">您收到XXX给出的感谢</div>
+                                    <div class="col-50 even">金额：500000元</div>
+                                </div>
+                            </div>
+                            <!-- 加载提示符 -->
+                            <div class="infinite-scroll-preloader" v-show="currentPage[1]*10<total[1]">
+                                <div class="preloader">
+                                </div>
+                            </div>
+                            <p id="noMore" style="text-align:center;font-size:12px;padding:10px 0;color:#999;" v-show="currentPage[1]*10>total[1]">没有更多了...</p>    <!-- v-show="total[1]<=10" -->
+                        </div>
+                        
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <script src="https://cdn.bootcss.com/vue/2.3.4/vue.js"></script>
+        <script type='text/javascript' src='lib/sui/zepto.min.js' charset='utf-8'></script>
+        <script type='text/javascript' src='lib/sui/sm.min.js' charset='utf-8'></script>
+        <script type='text/javascript' src='lib/sui/sm-extend.min.js' charset='utf-8'></script>
+        <script>
+
+            var vm  = new Vue({
+                el:'.content',
+                data:{
+                    list:['','','','','','',''],
+                    list2:['','','','','','','','','',''],
+                    total:[13,15],
+                    currentPage:[1,1],
+                },
+                mounted(){
+                    this.loadData();
+                },
+                methods:{
+                    loadData:function(){    
+                    var self = this;
+                    var loading = false;
+
+                    var lastIndex ; //当前长度
+                    var maxItems = self.total;  //数据总长度
+
+                    function getData(ev){  //取数据
+                        if (ev == 0) {
+                            self.currentPage[0]++;
+                            self.list.push('','','','','','','');
+
+                            /*myFn.ajax('get', {page:self.currentPage[0],status:2}, apiAddress.task.todayTask, function(res){
+                                self.list.concat(res.data.data);
+                            });*/
+                            
+                        }else{
+                            self.currentPage[1]++;
+                            self.list2.push('','','','','');
+                            /*myFn.ajax('get', {page:self.currentPage[1],changeEndTime:self.current_time,status:1}, apiAddress.task.todayTask, function(res){
+                                self.list2.concat(res.data.data);
+                            });*/
+                        }
+                        console.log('之前长度：'+lastIndex)
+                    }
+                    
+                    // 注册'infinite'事件处理函数
+                    $(document).on('infinite', function() {
+                        /*alert(1);*/
+                        // 如果正在加载，则退出
+                        if (loading) return;
+                        // 设置flag
+                        loading = true;
+                        var tabIndex = 0;
+                        if($(this).find('.infinite-scroll.active').attr('id') == "tab1"){
+                            tabIndex = 0;
+                        }
+                        if($(this).find('.infinite-scroll.active').attr('id') == "tab2"){
+                            tabIndex = 1;
+                        }
+                        lastIndex = $('.infinite-scroll').eq(tabIndex).find('.content-list').length;
+                        // 模拟1s的加载过程
+                        setTimeout(function() {
+                          // 重置加载flag
+                            loading = false;
+                            if (lastIndex >= maxItems[tabIndex]) {
+                                // 加载完毕，则注销无限加载事件，以防不必要的加载:$.detachInfiniteScroll($('.infinite-scroll').eq(tabIndex));多个无线滚动请自行根据自己代码逻辑判断注销时机
+                                // 删除加载提示符
+                                $('.infinite-scroll-preloader').eq(tabIndex).hide();
+                                console.log('没有更多了')
+                                return false;
+                            }
+                            
+                            getData(tabIndex);//ajax加载数据
+
+                            // 更新最后加载的数据长度
+                            lastIndex = $('.infinite-scroll').eq(tabIndex).find('.content-list').length;
+                            
+
+                            $.refreshScroller();
+                        }, 1000);
+                    });
+                    $.init();
+                }
+                }
+            })
+
+
+            // 鼠标点击位置，点击元素，元素当前位置
+            var thisPageX = '';
+            var thisEl = ''
+            var thisEl_rightPx = ''
+
+            $('#tab1 .recommend').mousedown(function(e) {
+                thisEl = $(this);
+                thisPageX = e.pageX;
+                thisEl_rightPx = parseInt($(this).css('right'));
+                $('body').mousemove (getPageX);
+            });
+
+            $('#tab1 .recommend').mouseup(function(e) {
+                if(parseInt($(this).css('right')) > 25 ){
+                    $(this).css('right', '70px');
+                }else {
+                    $(this).css('right', '0px');
+                }
+                $('body').unbind('mousemove', getPageX);
+                thisEl = '';
+                e.stopPropagation();
+            });
+
+            // 获取鼠标移动位置
+            function getPageX(e) {
+                var diff = thisPageX - e.pageX;
+                if (thisEl_rightPx >= 0 && thisEl_rightPx <= 70 && thisEl_rightPx + diff > 0 && thisEl_rightPx + diff <= 70) {
+                    thisEl.css('right', thisEl_rightPx + diff + 'px');
+                }
+            }
+            
+            function goDetails(idnex){
+                switch(idnex){
+                    case 1:
+                        location.href = 'commerce_recommended.html'
+                        break;
+                    case 2:
+                        location.href = 'received_thanks.html'
+                        break;
+                }
+            }
+
+            // 阻止冒泡事件
+            function stopHref (e) {
+                e.stopPropagation();
+            }
+
+            // 删除元素
+            function del (e) {
+                if (confirm('确定删除吗')) {
+                    alert('删除成功');
+                }
+                e.stopPropagation();
+            }
+        </script>
+    </body>
+
+    
+</html>

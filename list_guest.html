@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>嘉宾列表</title>
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+        <link rel="shortcut icon" href="/favicon.ico">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="stylesheet" href="lib/sui/sm.min.css">
+        <link rel="stylesheet" href="lib/sui/sm-extend.min.css">
+        <link rel="stylesheet" href="css/main.css">
+        <style>
+            .content {
+                background: #fff;
+            }
+            .buttons-tab .button.active{
+                color: #86334F;
+                border-color: #86334F;  
+            }
+            .head-img{
+                width: 40px;
+                border-radius: 10px;
+                vertical-align: baseline;
+            }
+            .item-title > div{
+                display: inline-block;
+                margin-left: 20px;
+                line-height: 25px;
+            }
+            .item-title > div > p{
+                margin: 0;
+                font-size: 14px;
+            }
+
+            /*.read .dot{
+                position: absolute;
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                background-color: red;
+                right: 30px;
+                top: 10px;
+            }*/
+        </style>
+    </head>
+    <body>
+        <div class="page-group">
+            <div class="page page-current">
+                <!-- 这里是页面内容区 -->
+                <div class="content">
+                    <div class="buttons-tab">
+                        <a href="#tab1" class="tab-link active button">我的嘉宾</a>
+                        <a href="#tab2" class="tab-link button read">
+                            待审核的嘉宾
+                            <!-- <div class="dot"></div> -->
+                        </a>
+                    </div>
+                    <div class="content-block">
+                        <div class="tabs">
+                            <div id="tab1" class="tab active">
+                                <div class="list-block contacts-block">
+                                    <div class="list-group">
+                                        <ul>
+                                            <li>
+                                                <div class="item-content">
+                                                    <div class="row item-inner no-gutter">
+                                                        <div class="col-80 item-title">
+                                                            <img src="images/head_img.png" class="head-img">
+                                                            <div>
+                                                                <p>谭某某</p>
+                                                                <p>13841015680</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="item-content">
+                                                    <div class="row item-inner no-gutter">
+                                                        <div class="col-80 item-title">
+                                                            <img src="images/head_img.png" class="head-img">
+                                                            <div>
+                                                                <p>谭某某</p>
+                                                                <p>13841015680</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="tab2" class="tab">
+                                <div class="list-block contacts-block">
+                                    <div class="list-group">
+                                        <ul>
+                                            <li>
+                                                <div class="item-content">
+                                                    <div class="item-inner no-gutter">
+                                                        <div class=" item-title">
+                                                            <img src="images/head_img.png" class="head-img">
+                                                            <div>
+                                                                <p>谭某某2</p>
+                                                                <p>13841015680</p>
+                                                            </div>
+                                                        </div>
+                                                        <div >
+                                                            <a href="#" class="button button-sm public-small-button public-bg-gray">拒绝</a>
+                                                            <a href="#" class="button button-sm public-small-button public-bg-black public-btn-violet">同意</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="item-content">
+                                                    <div class="item-inner no-gutter">
+                                                        <div class="col-70 item-title">
+                                                            <img src="images/head_img.png" class="head-img">
+                                                            <div>
+                                                                <p>谭某某</p>
+                                                                <p>13841015680</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-30">
+                                                            <a href="#" class="button button-sm public-small-button public-bg-gray">拒绝</a>
+                                                            <a href="#" class="button button-sm public-small-button public-bg-black public-btn-violet">同意</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <script type='text/javascript' src='lib/sui/zepto.min.js' charset='utf-8'></script>
+        <script type='text/javascript' src='lib/sui/sm.min.js' charset='utf-8'></script>
+        <script type='text/javascript' src='lib/sui/sm-extend.min.js' charset='utf-8'></script>
+
+    </body>
+
+    
+</html>

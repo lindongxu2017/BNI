@@ -1,0 +1,15 @@
+body{
+	background: #fff;
+	font-family:  'Microsoft YaHei'
+}
+
+.bar:after{
+	height: 0;
+}
+
+.content{
+	background: #fff;
+}
+.content-block{
+	margin: 0;
+}

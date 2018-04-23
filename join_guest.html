@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>加入会员</title>
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+        <link rel="shortcut icon" href="/favicon.ico">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+        <link rel="stylesheet" href="lib/sui/sm.min.css">
+        <link rel="stylesheet" href="lib/sui/sm-extend.min.css">
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+    <style>
+        .content {
+            background: #fff;
+        }
+    </style>
+    <body>
+        <div class="page-group">
+            <div class="page page-current">
+                <!-- 这里是页面内容区 -->
+                <div class="content">
+                    <div class="banner">
+                        <img class="public-menber-banner" src="images/join-guest.png" />
+                    </div>
+                    <div class="content-block">
+                        <div class="public-member-title">嘉宾申请</div>
+                        <div class="list-block">
+                            <ul>
+                                <!-- Text inputs -->
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">邀请人会员编号:</div>
+                                            <div class="item-input">
+                                                <input type="text" placeholder="请填写邀请人编号">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">邀请人姓名:</div>
+                                            <div class="item-input">
+                                                <input type="text" placeholder="请填写邀请人姓名">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">申请人姓名:</div>
+                                            <div class="item-input">
+                                                <input type="text" placeholder="请填写申请人姓名">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">联系电话:</div>
+                                            <div class="item-input">
+                                                <input type="text" placeholder="请填写联系电话">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">验证码:</div>
+                                            <div class="item-input">
+                                                <input type="text" placeholder="请填写验证码">
+                                            </div>
+                                            <a id="code" class="button button-sm public-getCode-button" :style="getCodeVal?background1:background2" @click="getCode()" v-html="getCodeTxt"></a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <p><a href="list_guest.html" class="external button button-big  public-menber-submit public-btn-violet">提交申请</a></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <script src="https://cdn.bootcss.com/vue/2.3.4/vue.js"></script>
+        <script type='text/javascript' src='lib/sui/zepto.min.js' charset='utf-8'></script>
+        <script type='text/javascript' src='lib/sui/sm.min.js' charset='utf-8'></script>
+        <script type='text/javascript' src='lib/sui/sm-extend.min.js' charset='utf-8'></script>
+
+        <script>
+            var vm = new Vue({
+
+                el:'.content',
+                data:{
+                    getCodeVal: true,
+                    background1:'background:#86334F;color:#fff',
+                    background2:'background:#E5E5E5;color:#999;border-color:#999',
+                    getCodeTxt:'获取'
+                },
+                methods:{
+                    getCode:function(){
+                        var self = this;
+                        if (self.getCodeVal == true) {
+                            self.getCodeVal = !self.getCodeVal;
+                            self.getCodeTxt = 60 + ' s';
+                            var t = setInterval(function(){
+                                self.getCodeTxt = parseInt(self.getCodeTxt) - 1 + ' s';
+                            },1000)
+                            setTimeout(function(){
+                                self.getCodeVal = !self.getCodeVal;
+                                self.getCodeTxt = '获取';
+                                clearInterval(t);
+                            },61000)
+                        };
+                    }
+                }
+            })
+        </script>
+
+    </body>
+
+    
+</html>

@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>个人中心</title>
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+        <link rel="shortcut icon" href="/favicon.ico">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+        <link rel="stylesheet" href="lib/sui/sm.min.css">
+        <link rel="stylesheet" href="lib/sui/sm-extend.min.css">
+        <link rel="stylesheet" href="css/main.css">
+        <style>
+            .business_recommended {
+                font-size: 16px;
+                padding-bottom: 20px;
+            }
+            .business_recommended .info {
+                padding: 10px;
+                background: #000;
+                position: relative;
+            }
+            .business_recommended .info img {
+                width: 100px;
+            }
+            .business_recommended .info p {
+                font-size: 14px;
+                margin:3px;
+            }
+            .business_recommended .info button {
+                display: block;
+                right: 15px;
+                bottom: 15px;
+                color: #86334F;
+                font-size: 12px;
+                background: none;
+                padding: 5px 10px;
+                border-radius: 3px;
+                position: absolute;
+                vertical-align: top;
+                border: 1px #86334F solid;
+
+            }
+            .business_recommended .info div {
+                max-width: 230px;
+                margin-left: 15px;
+                display: inline-block;
+                vertical-align: top;
+                margin-top: 7px;
+                line-height: 27px;
+                color: #747577;
+            }
+
+
+            .content{
+                background-color: #F5F5F5;
+            }
+            .content-block{
+                margin: 0;
+                color: #181818;
+                background-color: #fff;
+            }
+            .content-block p{
+                margin: 0;
+            }
+            .recode{
+                margin-top: 0!important;
+                border-bottom: 1px solid #c8c8c8;
+            }
+            .recode-list{
+                padding: 15px 0;
+            }
+            .recode-list > div:hover{
+                cursor: pointer;
+            }
+            .border-r{
+                text-align: center;
+                border-right: 1px dashed #A6A8AA;
+            }
+            .border-r > p:first-child{
+                color: #A6A8AA;
+                font-size: 14px;
+                margin-bottom: 5px;
+            }
+            .row{
+                width: 100%;
+                margin-left: 0;
+            }
+            .row .col-25{
+                width: 25%;
+                margin-left: 0;
+            }
+            .money{
+                padding: 15px 0;
+                margin-top: 5px;
+                text-align: center;
+            }
+            .money-t{
+                color: #A6A8AA
+            }
+            .money-b{
+                font-size: 22px;
+                color: #86334F;
+            }
+            /* .score{
+                margin-top: 5px;
+                font-size: 15px;
+                padding: .6rem 15px;
+            } */
+            .list-block{
+                margin: 0;
+                margin-top: 7px;
+                font-size: 15px;
+            }
+            .list-block ul:before{
+                height: 0;
+            }
+            .list-block .item-content{
+                padding-left: 0;
+            }
+            .list-block .item-after{
+                font-size: 14px;
+            }
+            .list-block ul:after{
+                height: 0;
+            }
+            .list-block .item-inner{
+                padding: .6rem 0;
+            }
+            .recommend{
+                font-size: 12px;
+                margin-top: 3px;
+            }
+            .list-block .item-inner::after{
+                height: 0;
+            }
+
+            .progress{
+                width: 200px;
+                min-height: 20px;
+                background-image: url(images/progress-back.png);
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: contain ;
+                position: relative;
+            }
+            .progress img{
+                width: 200px;
+                top: 5px;
+                height: 9px;
+                position: absolute;
+            }
+            .bar-header-secondary ~ .content{
+                top: 0;
+            }
+
+            .btn-recommend{
+                
+                width: 60px;
+                color:#86334F;
+                
+                height: 25px;
+                padding: 5px 0;
+                font-size: 12px;
+                line-height: 15px;
+                text-align: center;
+                display: inline-block;
+                background-color: #fff;
+                border: 1px solid #86334F;
+                
+            }
+            .inactive{
+                border: 0;
+                color: #fff;
+                background-color: #86334F;  
+            }
+
+            table{
+                width: 100%;
+                color: #181818;
+                text-align: center;
+                background-color: #fff;
+                font-size: .75rem;
+            }
+            table tr{
+                padding: 5px 0;
+                border-bottom: 1px solid #c8c8c8;
+            }
+            th,td{
+                height: 48px;
+            }
+            th{
+                font-weight: 500;
+            }
+            .mask-l{
+                position: relative;
+            }
+            .mask-l:before{
+                content: '';
+                width: 10px;
+                height: 2px;
+                position: absolute;
+                background-color: #fff;
+                bottom: -1px;
+                left: 0;
+            }
+            .mask-r{
+                position: relative;
+            }
+            .mask-r:before{
+                content: '';
+                width: 10px;
+                height: 2px;
+                position: absolute;
+                background-color: #fff;
+                bottom: -1px;
+                right: 0;
+            }
+
+            .list-block .item-content{
+                color: #181818;
+            }
+
+            .shiny{
+                display: inline-block;
+                margin-top: 2px;
+                margin-right: 3px;
+                width:14px;
+                height:14px;
+                border-radius:50%;
+                /* text-box-shadow:0 1px 2px rgba(0,0,0,.3); */
+                box-shadow:0 0 2px #FF5E00;
+                background-image: -webkit-gradient(linear, left top, left bottom, from(#FF5E00), to(#FF0000));
+            }
+            .wx_name{
+                display: block;
+                white-space:nowrap;
+                text-overflow:ellipsis;
+                overflow:hidden;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="page-group">
+            <div class="page page-current">
+                <!-- 标题栏 -->
+                <!-- <header class="bar bar-nav">
+                    <a class="icon icon-me pull-left open-panel"></a>
+                    <h1 class="title">个人中心</h1>
+                </header> -->
+
+                <nav class="bar bar-tab">
+                    <a class="tab-item external" href="index.html">
+                        <span class="icon"><img src="images/home.png" width="25"></span>
+                        <span class="tab-label">会员风采</span>
+                    </a>
+                    <!-- <a class="tab-item external" href="">
+                        <span class="icon"><img src="images/qiqiu.png" width="25"></span>
+                        <span class="tab-label">活动</span>
+                    </a> -->
+                    <a class="tab-item external" href="business.html">
+                        <span class="icon"><img src="images/business.png" width="25"></span>
+                        <span class="tab-label">商务引荐</span>
+                    </a>
+                    <a class="tab-item external active" href="">
+                        <span class="icon"><img src="images/person-check2.png" width="25"></span>
+                        <span class="tab-label">会员中心</span>
+                    </a>
+                </nav>
+
+                <!-- 这里是页面内容区 -->
+                <div class="content business_recommended">
+                    <div class="info">
+                        <img  src="http://tx.haiqq.com/uploads/allimg/150327/21154111N-13.jpg" />
+                        <div>
+                            <p class="wx_name">微信名称：<span class="public-fontColor-white">tingshuasdjhzgxcjasgjgdhjxbgzjhGcjashd</span></p>
+                            <p>分会职务：<span class="public-fontColor-white">娱乐</span></p>
+                            <p>入会时间：<span class="public-fontColor-white">2017-07-6</span></p>
+                        </div>
+                        <!-- <button onclick="window.location.href = 'join_member.html' ">加入会员</button> -->
+                    </div>
+                    
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>考核项目</th>
+                                    <th>满分</th>
+                                    <th>要求</th>
+                                    <th>实际考核</th>
+                                    <th>目前得分</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="mask-l">早会缺席</td>
+                                    <td>15</td>
+                                    <td>0</td>
+                                    <td></td>
+                                    <td class="mask-r"></td>
+                                </tr>
+                                <tr>
+                                    <td class="mask-l">早会迟到</td>
+                                    <td>15</td>
+                                    <td>0</td>
+                                    <td></td>
+                                    <td class="mask-r"></td>
+                                </tr>
+                                <tr>
+                                    <td class="mask-l">商务引荐</td>
+                                    <td>15</td>
+                                    <td>0</td>
+                                    <td></td>
+                                    <td class="mask-r"></td>
+                                </tr>
+                                <tr>
+                                    <td class="mask-l">邀约嘉宾</td>
+                                    <td>15</td>
+                                    <td>0</td>
+                                    <td></td>
+                                    <td class="mask-r"></td>
+                                </tr>
+                                <tr>
+                                    <td class="mask-l">121面访</td>
+                                    <td>15</td>
+                                    <td>0</td>
+                                    <td></td>
+                                    <td class="mask-r"></td>
+                                </tr>
+                                <tr>
+                                    <td class="mask-l">技能培训</td>
+                                    <td>15</td>
+                                    <td>0</td>
+                                    <td></td>
+                                    <td class="mask-r"></td>
+                                </tr>
+                                <tr>
+                                    <td class="mask-l">给出感谢</td>
+                                    <td>15</td>
+                                    <td>0</td>
+                                    <td></td>
+                                    <td class="mask-r"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    
+                    <!-- <div class="content-block">
+                        <div class="recode"><p>记录时间:7月1 -- 8月1日</p></div> -->
+                        
+                        <!-- <div class="list-block recode">
+                            <ul>
+                                <li class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title">记录时间:7月1 -- 8月1日</div>
+                                        <div class="item-after">
+                                            <a  class="button button-sm btn-recommend" style="margin-right: 20px;">当月</a>
+                                            <a  class="external button button-sm btn-recommend inactive">半年</a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="row recode-list">
+                            <div class="col-25" onclick="window.location.href = 'list_detailed.html' ">
+                                <div class="border-r">
+                                    <p>出席记录</p>
+                                    <p>156</p>
+                                </div>
+                            </div>
+                            <div class="col-25" onclick="window.location.href = 'list_detailed.html' ">
+                                <div class="border-r">
+                                    <p>121记录</p>
+                                    <p>106</p>
+                                </div>
+                            </div>
+                            <div class="col-25" onclick="window.location.href = 'list_detailed.html' ">
+                                <div class="border-r">
+                                    <p>引荐记录</p>
+                                    <p>116</p>
+                                </div>
+                            </div>
+                            <div class="col-25" onclick="window.location.href = 'list_detailed.html' ">
+                                <div class="border-r" style="border-right:0;">
+                                    <p>嘉宾记录</p>
+                                    <p>216</p>
+                                </div>
+                            </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row content-block money">
+                                                    <div class="col-50 border-r">
+                            <p class="money-t">给出感谢</p>
+                            <p class="money-b">106.00元</p>
+                                                    </div>
+                                                    <div class="col-50">
+                            <p class="money-t">给出感谢</p>
+                            <p class="money-b">106.00元</p>
+                                                    </div>
+                                                </div> -->
+                    <div class="content-block">
+                        <div class="list-block" style="margin-top:0;">
+                            <ul>
+                                <li class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title">近半年成绩</div>
+                                        <div class="progress"><img src="images/progress.png"></div> 
+                                        <div class="item-after public-fontColor-black"><span class="shiny"></span><span class="score"></span></div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                   <!--  <div class="content-block">
+                        <div class="list-block">
+                            <ul style="padding: 5px 0;">
+                                <li class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title">
+                                            <p>黑卡会员进度</p>
+                                            <p class="recommend">邀请会员</p>
+                                        </div>
+                                        <div class="item-after">0/6</div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="content-block">
+                        <div class="list-block">
+                            <ul style="padding: 5px 0;">
+                                <li class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title">
+                                            <p>6分钟演讲资格</p>
+                                            <p class="recommend">会员培训</p>
+                                        </div>
+                                        <div class="item-after">0/1</div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div> -->
+
+                        <div class="content-block">
+                            <div class="list-block">
+                                <ul>
+                                    <li class="item-content item-link" onclick="window.location.href = 'member_details_edit.html' ">
+                                        <div class="item-inner">
+                                            <div class="item-title">个人资料</div>
+                                            <div class="item-after public-fontColor-red">未完善    </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    <!--<div class="content-block">
+                        <div class="list-block">
+                            <ul>
+                                <li class="item-content item-link" onclick="window.location.href = 'list_guest.html' ">
+                                    <div class="item-inner">
+                                        <div class="item-title">嘉宾列表</div>
+                                        <div class="item-after"></div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div> -->
+
+                        <div class="content-block">
+                            <div class="list-block">
+                                <ul>
+                                    <li class="item-content item-link" onclick="window.location.href = 'member_GAINS.html' ">
+                                        <div class="item-inner">
+                                            <div class="item-title">GAINS表</div>
+                                            <div class="item-after public-fontColor-red">未完善</div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    <!-- </div> -->
+                </div>
+            </div>
+        </div>
+
+
+        <script type='text/javascript' src='lib/sui/zepto.min.js' charset='utf-8'></script>
+        <script type='text/javascript' src='lib/sui/sm.min.js' charset='utf-8'></script>
+        <script type='text/javascript' src='lib/sui/sm-extend.min.js' charset='utf-8'></script>
+
+        <script>
+            var score = '88';
+            var color = '';
+            var clipWidth = (score/100)*200;
+
+            if(score < 25){
+                color = '#000';
+            }else if(score < 45){
+                color = '#f00';
+            }else if(score < 70){
+                color = '#FFCB00';
+            }else{
+                color = '#FF5E00';
+            }
+
+            $('.score').html(score+'分');
+
+            $('.progress img').css({
+                clip:'rect(0px ' + this.clipWidth + 'px' + ' 200px 0px)'
+            })
+
+
+            $('.shiny').css({
+                'background-image': '-webkit-gradient(linear, left top, left bottom, from(#FF5E00), to(' + color +'))',
+                'box-shadow':'0 0 2px ' + color
+            })
+
+            $('.recode a').click(function(){
+                $('.recode a').removeClass('inactive');
+                $(this).addClass('inactive')
+            })
+        </script>
+
+    </body>
+</html>
